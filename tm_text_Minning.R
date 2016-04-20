@@ -3,6 +3,7 @@ install.packages('wordcloud')
 install.packages('tm')
 
 library(tm)
+library(wordcloud)
 
 # check directory
 dir()
@@ -29,3 +30,12 @@ dtm <- DocumentTermMatrix(corpus)
 dtm2 <- as.matrix(dtm)
 
 frequency <- colSums(dtm2)
+
+frequency <- sort(frequency, decreasing=TRUE)
+
+head(frequency)
+
+
+words <- names(frequency)
+
+wordcloud(words[1:100], frequency[1:100])
